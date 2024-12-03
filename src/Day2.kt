@@ -63,20 +63,16 @@ fun isReportSave(report: List<Int>, asc: Boolean): Boolean {
 fun solvePart2(reports: List<List<Int>>): Int {
     var result = 0;
     for (report in reports) {
-        try {
-            if (isReportSaveWithDampener(report, report.first() < report.last())) {
-                result++
-                continue
-            }
-            if (isReportSaveWithDampener(report.drop(1), report[1] < report.last(), true)) {
-                result++
-                continue
-            }
-            if (isReportSaveWithDampener(report.dropLast(1), report.first() < report[report.size - 2], true)) {
-                result++
-            }
-        } catch (e: Exception) {
-            println("Error on report $report")
+        if (isReportSaveWithDampener(report, report.first() < report.last())) {
+            result++
+            continue
+        }
+        if (isReportSaveWithDampener(report.drop(1), report[1] < report.last(), true)) {
+            result++
+            continue
+        }
+        if (isReportSaveWithDampener(report.dropLast(1), report.first() < report[report.size - 2], true)) {
+            result++
         }
     }
     return result
