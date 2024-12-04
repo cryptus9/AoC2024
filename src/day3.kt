@@ -1,5 +1,10 @@
 fun main() {
     val rawData = readInput("day3").joinToString();
+    solvePartOne(rawData)
+    solvePartTwo(rawData)
+}
+
+private fun solvePartOne(rawData: String) {
     check(listOf("mul(2,4)") == matchAllInstructions("xmul(2,4)%&"))
     check(
         listOf(
@@ -20,7 +25,9 @@ fun main() {
 
     val result = instructions.sumOf { executeOperation(it) }
     println(result)
+}
 
+private fun solvePartTwo(rawData: String) {
     check("xmul(2,4)&mul[3,7]!^?mul(8,5))" == cleanDataForPartTwo("xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"))
     check("xmul(2,4)&mul[3,7]!^?mul(8,5))" == cleanDataForPartTwo("xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))don't()mul434834893fjdfjn"))
 
